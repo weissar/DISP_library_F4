@@ -1,0 +1,25 @@
+Vytvoreni knihovny:
+- napr. https://www.eclipse.org/forums/index.php/t/1087702/
+- https://stackoverflow.com/questions/2649334/difference-between-static-and-shared-libraries
+
+- New project - C/C++ - C project
+-- Static library - Empty Project - MCU ARM GCC
+-- pak volba procesoru - zakladem asi neco s F4 jadrem - napr. F411RETx
+- Source folder - Src
+- Folder - Inc
+- Settings - ... Include path - pridat "Inc"
+
+Nastaveni knihovny:
+- !!! vychozi ma max. optimalizace a no-FPU
+-- pro no-FPU to pri linkovani v aplikaci hlasi erro VFP call
+- Settings - C/C++ sett - MCU/MPU
+-- Povolit FPU a zvolit HW FPU
+- radsi overit vypnute optimalizace a naopak debug-podporu
+
+Pouziti knihovny:
+- viz. https://community.st.com/t5/stm32-mcus/how-to-add-external-libraries-in-stm32cubeide/ta-p/628619
+- MCU settings - Linker - Libraries
+-- Do :Libraries: pridat soubor "DISP_library_F4" - tj. bez uvodniho "lib" a pripony ".a"
+-- Do :Library Path: dat cestu, napr. "${workspace_loc:/DISP_library_F4/Debug}"
+- C/C++ General - Path and Symbols - Include Path
+-- napr. ${ProjName}/../DISP_library_F4/Inc
