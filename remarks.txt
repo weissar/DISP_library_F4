@@ -23,3 +23,19 @@ Pouziti knihovny:
 -- Do :Library Path: dat cestu, napr. "${workspace_loc:/DISP_library_F4/Debug}"
 - C/C++ General - Path and Symbols - Include Path
 -- napr. ${ProjName}/../DISP_library_F4/Inc
+
+Spojeni s GitHub
+- EGit v Eclipse-Marketplace je nejaky stary (6.7.0) a nefunguje
+-- je potreba ho instalovat z linku "download" na https://eclipse.dev/egit/
+- github prestal podporovat https synchronizaci
+-- pouzit navod https://stackoverflow.com/questions/68790276/pushing-from-eclipse-to-my-github-repository-via-https-stopped-working-git-rec
+- pridani repo - https://superuser.com/questions/423792/how-to-push-an-existing-eclipse-project-to-github
+-- prip. https://shadyelectronics.com/how-to-use-github-with-stm32cubeide/
+- !!! nakonec to ale nefunguje, da se udelat PUSH, ale neprojde COMMIT
+-- takze zpet, vse znovu
+-- projekt zazalohovat a z workspace vse pryc, prip. pomazat zbytky
+-- pomoci Github-Desktop udelat clone stavajiciho repo (zatim prakticky prazdny)
+-- umistit do workspace
+-- nakopirovat zpet soubory projektu
+-- z Github-Desktop pak pujde uvodni Commit a uz to jede ok
+-- ?? teoreticky mozno odinstalovat EGit ??
