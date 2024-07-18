@@ -7,6 +7,19 @@
 #include <string.h>
 
 // here isn't DISP_init or similar, must be called in implementation
+typedef struct _DISP_size_struct
+{
+  int w;
+  int h;
+} DISP_size_t;
+
+typedef struct _DISP_point_struct
+{
+  int x;
+  int y;
+} DISP_point_t;
+
+void DISP_PointOffset(DISP_point_t* pPoint, int xOffset, int yOffset);
 
 int DISP_GetWidth(void);
 int DISP_GetHeight(void);
@@ -53,6 +66,8 @@ void DISP_WriteCharXY(int xPix, int yPix, char c);
 void DISP_WriteChar(char c);
 void DISP_WriteString(char* cp);
 void DISP_GotoXY(int xPix, int yPix);
+int DISP_GetCursorX(void);
+int DISP_GetCursorY(void);
 void DISP_GotoColRow(int col, int row);
 bool DISP_Clear(void);
 bool DISP_Fill(uint32_t color);

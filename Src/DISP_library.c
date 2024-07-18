@@ -43,6 +43,22 @@ bool DISP_library_Init(DISP_Description *pDescr)
 #ifdef __GNUC__
 __inline
 #endif
+/**
+ * .
+ *
+ * \param pPoint
+ * \param xOffset
+ * \param yOffset
+ */
+void DISP_PointOffset(DISP_point_t* pPoint, int xOffset, int yOffset)
+{
+  pPoint->x += xOffset;
+  pPoint->y += yOffset;
+}
+
+#ifdef __GNUC__
+__inline
+#endif
 int DISP_GetWidth(void) { return _pixelsWidth; }
 #ifdef __GNUC__
 __inline
@@ -132,6 +148,22 @@ void DISP_GotoXY(int xPix, int yPix)
 {
   textX = xPix;
   textY = yPix;
+}
+
+#ifdef __GNUC__
+__inline
+#endif
+int DISP_GetCursorX(void)
+{
+  return textX;
+}
+
+#ifdef __GNUC__
+__inline
+#endif
+int DISP_GetCursorY(void)
+{
+  return textY;
 }
 
 void DISP_GotoColRow(int col, int row)
