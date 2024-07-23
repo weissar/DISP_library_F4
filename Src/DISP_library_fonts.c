@@ -21,16 +21,16 @@ bool DISP_SetFont_Gfx(eFontsGfx font)
   switch (font)
   {
     case fontGfx_FreeMono18pt7b:
-      _pFontGfx = &FreeMono18pt7b;
+      _pFontGfx = (GFXfont *)&FreeMono18pt7b;     // cast due warning - lost "const"
       break;
     case fontGfx_FreeSans12pt7b:
-      _pFontGfx = &FreeSans12pt7b;
+      _pFontGfx = (GFXfont *)&FreeSans12pt7b;
       break;
     case fontGfx_FreeSansBold12pt7b:
-      _pFontGfx = &FreeSansBold12pt7b;
+      _pFontGfx = (GFXfont *)&FreeSansBold12pt7b;
       break;
     case fontGfx_Orbitron_Light_24:
-      _pFontGfx = &Orbitron_Light_24;
+      _pFontGfx = (GFXfont *)&Orbitron_Light_24;
       break;
     default:
       _pFontGfx = NULL;
