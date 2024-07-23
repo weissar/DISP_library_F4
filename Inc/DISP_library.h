@@ -26,6 +26,7 @@ int DISP_GetHeight(void);
 
 void DISP_DrawLine(int x0, int y0, int x1, int y1, uint32_t color);
 void DISP_DrawHLine(int x0, int y0, int w, uint32_t color);
+void DISP_DrawVLine(int x0, int y0, int h, uint32_t color);
 
 void DISP_DrawRect(int x, int y, int w, int h, uint32_t color);
 void DISP_FillRect(int x, int y, int w, int h, uint32_t color);
