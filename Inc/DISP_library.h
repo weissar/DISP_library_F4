@@ -59,9 +59,11 @@ void DISP_FillTriangleEx(float x0, float y0, float x1, float y1, float x2, float
 
 void DISP_TextForeColor(uint32_t color);
 void DISP_TextBackColor(uint32_t color);
+void DISP_TextBackTransparent(bool trans);
 
 uint32_t DISP_GetTextForeColor(void);
 uint32_t DISP_GetTextBackColor(void);
+bool  DISP_GetTextBackTransparent(void);
 
 void DISP_WriteCharXY(int xPix, int yPix, char c);
 void DISP_WriteChar(char c);

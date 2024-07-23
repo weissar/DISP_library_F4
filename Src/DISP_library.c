@@ -225,6 +225,7 @@ void DISP_WriteString(char* cp)
 
 static uint32_t _textForeColor = 0xffffffff;    // white
 static uint32_t _textBackColor = 0x00000000;    // black
+static bool _textBackTransparent = true;        // default is tranparent
 
 void DISP_TextForeColor(uint32_t color)
 {
@@ -236,6 +237,11 @@ void DISP_TextBackColor(uint32_t color)
   _textBackColor = color;
 }
 
+void DISP_TextBackTransparent(bool trans)
+{
+  _textBackTransparent = trans;
+}
+
 uint32_t DISP_GetTextForeColor(void)
 {
   return _textForeColor;
@@ -244,6 +250,11 @@ uint32_t DISP_GetTextForeColor(void)
 uint32_t DISP_GetTextBackColor(void)
 {
   return _textBackColor;
+}
+
+bool  DISP_GetTextBackTransparent(void)
+{
+  return _textBackTransparent;
 }
 
 //! X a Y jsou sloupce a radky v pocitani znaku !!
@@ -311,14 +322,21 @@ void DISP_WriteCharXY(int xPix, int yPix, char c)
       {
         for (jj = 0; jj < iFontMultiply; jj++)
         {
-          _DrawPixel(xr, yr, (b & 1) ? _textForeColor : _textBackColor);    // LSB first
+          if (_textBackTransparent)
+          {
+            if (b & 1)
+              _DrawPixel(xr, yr, _textForeColor);
+          }
+          else
+            _DrawPixel(xr, yr, (b & 1) ? _textForeColor : _textBackColor);  // LSB first
+
           yr++;
         }
 
         b >>= 1;
       }
 
-      if (bbLineSpace)
+      if (bbLineSpace && !_textBackTransparent)
       {
         for (jj = 0; jj < iFontMultiply; jj++)
         {
@@ -331,7 +349,7 @@ void DISP_WriteCharXY(int xPix, int yPix, char c)
     }
   }
 
-  if (bbPixSpace)
+  if (bbPixSpace && !_textBackTransparent)
   {
     // zustava posledni XR
     for (ii = 0; ii < iFontMultiply; ii++)
