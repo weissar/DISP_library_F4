@@ -96,6 +96,7 @@ void DISP_DrawSpriteMono8(int x, int y, uint8_t *data, int rows, int zoom, uint3
 bool DISP_DrawBitmap(void* pData, int xPos0, int yPos, int w, int h);
 bool DISP_DrawBitmapTrans(void* pData, int xPos, int yPos, int w, int h, uint32_t tColor);
 
+#ifndef TFT_RGB888    // ne pokud uz to ma implementace podle sebe
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 // uint16 ... gggb bbbb . rrrr rggg
 //TODO !!! #define RGB565(r,g,b)  ((((r) & 0x001f) << 11) | (((g) & 0x3f) << 5) | ((b) & 0x1f))
@@ -130,5 +131,6 @@ bool DISP_DrawBitmapTrans(void* pData, int xPos, int yPos, int w, int h, uint32_
 #define TFT16BIT_ORANGE      RGB888( 255, 165,   0 )
 #define TFT16BIT_GREENYELLOW RGB888( 173, 255,  47 )
 #define TFT16BIT_DARKESTGRAY RGB888(  32,  32,  32 ) 
+#endif // RGB888
 
 #endif  // _DISP_LIBRARY_H
