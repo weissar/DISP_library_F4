@@ -56,7 +56,8 @@ void DISP_3D_RenderModel(G3D_Model* pModel)
   {
     for (int i = 0; i < pModel->cntTriangle; i++)
     {
-      if (G3D_NormalT(pModel, i).z * (((i % 2) == 0) ? 1 : -1) > 0)
+// no. better triangles !!      if (G3D_NormalT(pModel, i).z * (((i % 2) == 0) ? 1 : -1) > 0)
+      if (G3D_NormalT(pModel, i).z > 0)
       {
         DISP_FillTriangle(
           _tempWidth / 2 + pModel->vertexes[pModel->trians[i].v1 - 1].x,
